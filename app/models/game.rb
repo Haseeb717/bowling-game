@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/models/game.rb
 class Game < ApplicationRecord
   has_many :frames, dependent: :destroy

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/models/roll.rb
 class Roll < ApplicationRecord
   belongs_to :frame

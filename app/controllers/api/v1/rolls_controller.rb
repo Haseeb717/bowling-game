@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/controllers/rolls_controller.rb
 module Api
   module V1
@@ -12,7 +14,7 @@ module Api
           render json: { error: 'Frame already completed' }, status: :unprocessable_entity
         else
           frame.add_roll(params[:pins])
-          render json: { frame_id: frame.id, frame_score: frame.score, total_score: game.total_score }
+          render json: { frame_score: frame.score, total_score: game.total_score }, status: :ok
         end
       end
     end
