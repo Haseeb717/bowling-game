@@ -4,6 +4,10 @@
 module Api
   module V1
     class GamesController < ApplicationController
+      include Authenticable
+
+      before_action :authorize_request
+
       def create
         game = Game.create!
         render json: { id: game.id, status: 'New game started' }, status: :created

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_09_213931) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_10_112303) do
   create_table "frames", force: :cascade do |t|
     t.integer "game_id", null: false
     t.datetime "created_at", null: false
@@ -29,6 +29,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_09_213931) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["frame_id"], name: "index_rolls_on_frame_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.string "api_key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["api_key"], name: "index_users_on_api_key", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "frames", "games"

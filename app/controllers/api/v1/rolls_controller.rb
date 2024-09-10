@@ -4,6 +4,10 @@
 module Api
   module V1
     class RollsController < ApplicationController
+      include Authenticable
+
+      before_action :authorize_request
+
       def create
         game = Game.find(params[:game_id])
         frame = game.current_frame
